@@ -1,0 +1,20 @@
+Three ways of serving HTML content
+
+1. res.send(html)
+app.get('/about', (req, res) => {
+    res.send('<h1>Hello about page</h1>')
+})
+
+2. Serving an HTML page
+app.use(express.static(__dirname + "/public"));
+
+3. Use a templating engine
+Install handlebars view engine
+
+app.get('/', (req, res) => {
+    res.render('home.hbs', {
+        pageTitle: 'Home page',
+        currentYear: new Date().getFullYear(),
+        welcomeMessage: 'This is my welcome message'
+})
+});
